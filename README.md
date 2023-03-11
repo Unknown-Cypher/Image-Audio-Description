@@ -7,18 +7,18 @@ Establishing sensible sentences after analysing the features
 converion of sentences to an audio clip
 
 # Tech stack/concepts used-
-Deep Learning
-Convulutional Neural Networks
-Recuurent Neural Networks
-Word Embeddings
-pyttsx module
-Tensorflow module
-Keras module
+1. Deep Learning
+2. Convulutional Neural Networks
+3. Recuurent Neural Networks
+4. Word Embeddings
+5. pyttsx module
+6. Tensorflow module
+7. Keras module
 
 # Thought behind the project-
 We were looking for an oppurtunity to improve our machine learning and deep learning skills when we came across this project. This project was well suited for us as this project involves solving a real life problem using machine learning. We advanced into this project with a goal that we could help the bling people to perceive images around them. We are happy to put our skills to use to help the needed. This project helped us to expect how the real life problems could be solved uusing machine learning.
 
 # Team Members-
-Gumidelli Chandrahas
-Avantsa Raja Yashwanth
+1. Gumidelli Chandrahas
+2. Avantsa Raja Yashwanth
 
