@@ -16,7 +16,7 @@ converion of sentences to an audio clip
 7. Keras module
 
 # Thought behind the project-
-We were looking for an oppurtunity to improve our machine learning and deep learning skills when we came across this project. This project was well suited for us as this project involves solving a real life problem using machine learning. We advanced into this project with a goal that we could help the bling people to perceive images around them. We are happy to put our skills to use to help the needed. This project helped us to expect how the real life problems could be solved uusing machine learning.
+We were looking for an oppurtunity to improve our machine learning and deep learning skills when we came across this project. This project was well suited for us as this project involves solving a real life problem using machine learning. We advanced into this project with a goal that we could help the bling people to perceive images around them. We are happy to put our skills to use to help the needed. This project helped us to expect how the real life problems could be solved using machine learning.
 
 # Team Members-
 1. Gumidelli Chandrahas
