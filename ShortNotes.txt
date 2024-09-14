@@ -1,0 +1,38 @@
+Code walkthrough - 
+Used vgg16 to extract features from images and store the features in a features dict (image_id: features). 
+Created a mapping dict(image_id: list(captions)) to store a list of captions under each image id (An image has multiple captions).
+The captions are then preprocessed - converted letters to lower case, remove all the  characters except a-z, remove additional spaces, then do 'startseq' + sentence + 'endseq'.
+Used a tokenizer to tokenize the sentences. (hello how is she -> 5 73 18 2)
+
+In data_generator() - 3 lists - X1(input containing features from vgg16), X2(input containing few words from the caption), y(the next word to be predicted after seeing corresponding X1, X2
+For each caption, first it is tokenized. Then for each word in the caption X1, X2 and y are generated and then yielded back after batch_size number of images are processed.
+Eg for sentence: startseq hi you there endseq-> tokenization [0 64 87 1 100] ->X1 = [features] X2 = [0], y = [64] (iter 1) -> X1 =[[features],[features]]  X2 = [[0],[0,64]], y = [64,87] (iter 2) and so on. 
+Model - 
+# image feature layers
+inputs1 = Input(shape=(4096,))
+fe1 = Dropout(0.4)(inputs1)
+fe2 = Dense(256, activation='relu')(fe1)
+# sequence feature layers
+inputs2 = Input(shape=(max_length,))
+se1 = Embedding(vocab_size, 256, mask_zero=True)(inputs2)
+se2 = Dropout(0.4)(se1)
+se3 = LSTM(256)(se2)
+
+# decoder model
+decoder1 = add([fe2, se3])
+decoder2 = Dense(256, activation='relu')(decoder1)
+outputs = Dense(vocab_size, activation='softmax')(decoder2)
+
+model = Model(inputs=[inputs1, inputs2], outputs=outputs)
+model.compile(loss='categorical_crossentropy', optimizer='adam')
+
+
+Adam optimizer - 
+Momentum (First Moment Estimate): Adam maintains an exponentially decaying average of past gradients, known as the first moment (m_t).
+m(t) = B*m(t-1) + (1-B)g(t)
+Adaptive Learning Rates: Adam computes individual adaptive learning rates for each parameter using moment estimates (mean and variance of gradients).
+
+lstm - 
+Forget Gate: The forget gate decides what information from the previous cell state should be discarded. It looks at the current input and the previous hidden state to determine how much of the previous cell state should be "forgotten."
+Input Gate: The input gate decides how much of the new input should be written to the cell state. This gate helps update the cell state with new information.
+Output Gate: The output gate controls what part of the cell state should be output as the hidden state for the next time step.
